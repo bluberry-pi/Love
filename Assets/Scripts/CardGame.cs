@@ -7,16 +7,20 @@ public class CardGame : MonoBehaviour
     public GameObject[] cards;     // your 5 cards
     public TMP_Text[] cardTexts;   // the text on each card (same order)
 
-    int top;
+    // public so CardChanger can use them
+    [HideInInspector] public int top;
+    [HideInInspector] public char[] cardOp;
+    [HideInInspector] public int[] cardNum;
+    [HideInInspector] public bool[] used;
+
     char[] ops = { '+', '-', '*', '/' };
-    char[] cardOp;
-    int[] cardNum;
 
     void Start()
     {
         int n = cards.Length;
         cardOp = new char[n];
         cardNum = new int[n];
+        used = new bool[n];
 
         do
         {
@@ -45,9 +49,7 @@ public class CardGame : MonoBehaviour
         topText.text = top.ToString();
         for (int i = 0; i < n; i++)
         {
-            char symbol = cardOp[i];
-            if (symbol == '/') symbol = '÷';
-            cardTexts[i].text = symbol + "" + cardNum[i];
+            ShowCard(i);
         }
     }
 
@@ -56,7 +58,6 @@ public class CardGame : MonoBehaviour
         if (Time.timeScale == 0f) return;   // tutorial is open, ignore clicks
 
         if (!Input.GetMouseButtonDown(0)) return;
-        if (!Input.GetMouseButtonDown(0)) return;
 
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(mouse);
@@ -64,6 +65,14 @@ public class CardGame : MonoBehaviour
 
         for (int i = 0; i < cards.Length; i++)
             if (hit.transform == cards[i].transform) UseCard(i);
+    }
+
+    // updates the text on one card
+    public void ShowCard(int i)
+    {
+        char symbol = cardOp[i];
+        if (symbol == '/') symbol = '÷';
+        cardTexts[i].text = symbol + "" + cardNum[i];
     }
 
     void UseCard(int i)
@@ -77,11 +86,13 @@ public class CardGame : MonoBehaviour
             top /= cardNum[i];
         }
 
+        used[i] = true;   // so CardChanger knows this card is gone
         cards[i].GetComponent<CardPick>().Use();
         topText.text = top.ToString();
 
         if (top == 0) Debug.Log("You win!");
     }
+
     // true if a single "-" card would already take the top number to 0
     bool SolvedByOne()
     {
