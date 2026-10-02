@@ -13,6 +13,8 @@ public class CardPick : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 originalScale;
     private Camera cam;
+    private bool used;
+    public float flySpeed = 15f;
 
     void Start()
     {
@@ -24,6 +26,15 @@ public class CardPick : MonoBehaviour
 
     void Update()
     {
+        if (used)
+        {
+            transform.position += Vector3.up * flySpeed * Time.deltaTime;
+            transform.Rotate(0, 0, 360f * Time.deltaTime);
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 4f);
+
+            if (transform.localScale.x < 0.05f) gameObject.SetActive(false);
+            return;
+        }
         Vector2 mouseWorld = cam.ScreenToWorldPoint(Input.mousePosition);
 
         Collider2D hit = Physics2D.OverlapPoint(mouseWorld);
@@ -82,5 +93,10 @@ public class CardPick : MonoBehaviour
             originalPosition,
             Time.deltaTime * moveSpeed
         );
+    }
+    public void Use()
+    {
+        used = true;
+        GetComponent<Collider2D>().enabled = false; // can't click it again
     }
 }
