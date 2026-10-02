@@ -44,7 +44,11 @@ public class CardGame : MonoBehaviour
         // show everything
         topText.text = top.ToString();
         for (int i = 0; i < n; i++)
-            cardTexts[i].text = cardOp[i] + "" + cardNum[i];
+        {
+            char symbol = cardOp[i];
+            if (symbol == '/') symbol = '÷';
+            cardTexts[i].text = symbol + "" + cardNum[i];
+        }
     }
 
     void Update()
