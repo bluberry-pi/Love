@@ -49,6 +49,9 @@ public class CardGame : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;   // tutorial is open, ignore clicks
+
+        if (!Input.GetMouseButtonDown(0)) return;
         if (!Input.GetMouseButtonDown(0)) return;
 
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
