@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 3f;       // seconds between spawns
     public int   maxEnemiesAlive = 10;     // cap so the scene isn't flooded
     public float firstSpawnDelay = 1f;     // delay before first spawn
+    [Tooltip("How many enemies to spawn per wave. Each spawn still respects the maxEnemiesAlive cap.")]
+    public int   spawnCountPerWave = 1;    // enemies spawned per interval
 
     private int currentEnemies = 0;
 
@@ -40,7 +42,8 @@ public class EnemySpawner : MonoBehaviour
 
         while (true)
         {
-            if (currentEnemies < maxEnemiesAlive)
+            int toSpawn = Mathf.Min(spawnCountPerWave, maxEnemiesAlive - currentEnemies);
+            for (int i = 0; i < toSpawn; i++)
                 SpawnEnemy();
 
             yield return new WaitForSeconds(spawnInterval);

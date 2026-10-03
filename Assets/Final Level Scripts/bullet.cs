@@ -39,6 +39,11 @@ public class Bullet : MonoBehaviour
             if (e != null) e.TakeHit();
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,6 +52,11 @@ public class Bullet : MonoBehaviour
         {
             Enemy e = collision.gameObject.GetComponent<Enemy>();
             if (e != null) e.TakeHit();
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
             Destroy(gameObject);
         }
     }

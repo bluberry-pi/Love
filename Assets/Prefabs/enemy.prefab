@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 630221970616865634}
   - component: {fileID: 7657644129017247642}
   - component: {fileID: 1283630878354200288}
-  - component: {fileID: 6833126878816410006}
+  - component: {fileID: 8945917937390290536}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Enemy
@@ -157,7 +157,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.013798583, y: -0.5588497}
   m_Radius: 0.766345
---- !u!114 &6833126878816410006
+--- !u!114 &8945917937390290536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,11 +166,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3272908850279512118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41b931660b9b0c48a41f9fc004acca7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a1eb7606b9d1d242b05f0178d6b1842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   moveSpeed: 3
   bodySprite: {fileID: 7152622132706378877}
-  wobbleTiltAngle: 5
+  wobbleTiltAngle: 15
   wobbleInterval: 0.15
   bloodSplashPrefab: {fileID: 6366198819134323166, guid: a92c3d5460cfd8e47bb9112164698c18, type: 3}

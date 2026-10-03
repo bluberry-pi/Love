@@ -105,6 +105,10 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // Tell the KillCounter that an enemy died
+        KillCounter.killCount++;
+        Debug.Log("[KillCounter] Kills: " + KillCounter.killCount);
+
         // Destroy the enemy immediately
         Destroy(gameObject);
     }
