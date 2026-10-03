@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9781394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7903378184686097131, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+  m_PrefabInstance: {fileID: 1939504587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &23198922 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3424320991727614691, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -230,6 +235,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &291763729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5184053019420726068, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+  m_PrefabInstance: {fileID: 1939504587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &324861576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4196381686942629388, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+  m_PrefabInstance: {fileID: 1939504587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &395526674 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5875328022120227723, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -595,6 +610,42 @@ PrefabInstance:
       propertyPath: 'cardTexts.Array.data[4]'
       value: 
       objectReference: {fileID: 395526674}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: moveUpObjects.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: moveDownObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveUpObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1939504588}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveUpObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1292929339}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveUpObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 912571517}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveUpObjects.Array.data[3]'
+      value: 
+      objectReference: {fileID: 9781394}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveUpObjects.Array.data[4]'
+      value: 
+      objectReference: {fileID: 324861576}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveUpObjects.Array.data[5]'
+      value: 
+      objectReference: {fileID: 291763729}
+    - target: {fileID: 8465254166907637176, guid: 620014779460f0c468944c6958686c93, type: 3}
+      propertyPath: 'moveDownObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1536577498}
     - target: {fileID: 8582038341570645258, guid: 620014779460f0c468944c6958686c93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -700,6 +751,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 107f59b0ad8cb6540946ef64b51b87ca, type: 3}
+--- !u!1 &1292929339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9108858993616783604, guid: 107f59b0ad8cb6540946ef64b51b87ca, type: 3}
+  m_PrefabInstance: {fileID: 1292929338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1332435025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5361998928994417383, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -936,6 +992,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 136955227140294342, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
   m_PrefabInstance: {fileID: 1515697236}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1536577498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7402559638425424214, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+  m_PrefabInstance: {fileID: 1515697236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1594815317 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6793859277959034055, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -1103,6 +1164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 247769321612008232, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+      propertyPath: m_text
+      value: Your Cards Are Temperory
+      objectReference: {fileID: 0}
     - target: {fileID: 4145832714403989791, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1187,11 +1252,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ui
       objectReference: {fileID: 0}
+    - target: {fileID: 7001181604738932966, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+--- !u!1 &1939504588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7001181604738932966, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
+  m_PrefabInstance: {fileID: 1939504587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996709320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4630880744076801362, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -1202,7 +1276,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 245014626328358352, guid: 206b79dfee7dd8e4ba4219ba80b373d1, type: 3}
   m_PrefabInstance: {fileID: 1939504587}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 9781394}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -1219,6 +1293,6 @@ SceneRoots:
   - {fileID: 1070180025}
   - {fileID: 1292929338}
   - {fileID: 912571522}
-  - {fileID: 987584430}
   - {fileID: 1221071499}
   - {fileID: 1504331197}
+  - {fileID: 987584430}
