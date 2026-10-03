@@ -4,8 +4,9 @@ public class CardChanger : MonoBehaviour
 {
     public CardGame game;               // drag your GameManager here
     public CountdownTimer countdown;    // drag the object with your countdown here
+    public DeckSwapper swapper;         // drag the object with DeckSwapper here
 
-    float lastTime;                     // the countdown number from the last frame
+    float lastTime;
     char[] ops = { '+', '-', '*', '/' };
 
     void Start()
@@ -15,80 +16,77 @@ public class CardChanger : MonoBehaviour
 
     void Update()
     {
-        // Your countdown goes 5, 4, 3 ... then jumps back up to 5.
-        // If the number is now higher than last frame, it just hit 0 and restarted.
-        if (countdown.time > lastTime)
+        // The countdown jumped back up, so it just hit 0 and restarted
+        if (countdown.time > lastTime && game.top != 0)
         {
-            ChangeRandomCard();
+            swapper.ReplaceDeck();   // cards fall, DeckSwapper calls GiveNewCards(), cards rise
         }
 
         lastTime = countdown.time;
     }
 
-    void ChangeRandomCard()
+    // DeckSwapper calls this while the cards are off screen
+    public void GiveNewCards()
     {
-        // do nothing if the player already won
-        if (game.top == 0) return;
+        int count = game.cards.Length;
 
-        // try up to 50 times to find a change that keeps the level solvable
-        for (int tries = 0; tries < 50; tries++)
+        // remember the old deck in case we can't find a solvable one
+        char[] oldOp = new char[count];
+        int[] oldNum = new int[count];
+        for (int i = 0; i < count; i++)
         {
-            // 1. pick a random card
-            int i = Random.Range(0, game.cards.Length);
+            oldOp[i] = game.cardOp[i];
+            oldNum[i] = game.cardNum[i];
+        }
 
-            // 2. skip it if it was already used
-            if (game.used[i]) continue;
-
-            // 3. remember the old value so we can undo
-            char oldOp = game.cardOp[i];
-            int oldNum = game.cardNum[i];
-
-            // 4. give it a new random value
-            game.cardOp[i] = ops[Random.Range(0, 4)];
-            game.cardNum[i] = Random.Range(1, 10);
-
-            // 5. is it different, and can the level still be solved?
-            bool different = (game.cardOp[i] != oldOp) || (game.cardNum[i] != oldNum);
-
-            if (different && CanBeSolved(game.top))
+        // try many random decks until one can reach 0 from the current top number
+        for (int tries = 0; tries < 1000; tries++)
+        {
+            for (int i = 0; i < count; i++)
             {
-                game.ShowCard(i);   // update the text on the card
-                return;             // done
+                game.cardOp[i] = ops[Random.Range(0, 4)];
+                game.cardNum[i] = Random.Range(1, 10);
+                game.used[i] = false;   // every card is fresh again
             }
 
-            // 6. not good, put the old value back and try again
-            game.cardOp[i] = oldOp;
-            game.cardNum[i] = oldNum;
+            if (CanBeSolved(game.top))
+            {
+                for (int i = 0; i < count; i++) game.ShowCard(i);
+                return;
+            }
+        }
+
+        // no solvable deck found, put the old values back
+        for (int i = 0; i < count; i++)
+        {
+            game.cardOp[i] = oldOp[i];
+            game.cardNum[i] = oldNum[i];
+            game.used[i] = false;
         }
     }
 
-    // Checks: using the cards that are left, can we reach 0 from this number?
+    // Can we reach 0 from this number using the cards that are left?
     bool CanBeSolved(int number)
     {
-        if (number == 0) return true;   // reached 0, solved
+        if (number == 0) return true;
 
-        // try each card that is still in the player's hand
         for (int i = 0; i < game.cards.Length; i++)
         {
             if (game.used[i]) continue;
 
             int result = ApplyCard(number, i);
+            if (result == -9999) continue;   // bad division
 
-            // -9999 means "can't use this card right now" (bad division)
-            if (result == -9999) continue;
-
-            // pretend we use this card, then check what is left
             game.used[i] = true;
             bool solved = CanBeSolved(result);
-            game.used[i] = false;   // put it back
+            game.used[i] = false;
 
             if (solved) return true;
         }
 
-        return false;   // no order of cards works
+        return false;
     }
 
-    // Does the math of one card on a number
     int ApplyCard(int number, int i)
     {
         char op = game.cardOp[i];
@@ -98,7 +96,6 @@ public class CardChanger : MonoBehaviour
         if (op == '-') return number - n;
         if (op == '*') return number * n;
 
-        // division only works if it divides evenly
         if (number % n != 0) return -9999;
         return number / n;
     }

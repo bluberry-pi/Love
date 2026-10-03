@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardChanger
   game: {fileID: 536056210}
   countdown: {fileID: 912571518}
+  swapper: {fileID: 1504331196}
 --- !u!1 &861937739 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4786733958701480262, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -796,6 +797,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1504331195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504331197}
+  - component: {fileID: 1504331196}
+  m_Layer: 0
+  m_Name: DeckSwapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1504331196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504331195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7947cfbb8691ca4aa64931d4a9423e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeckSwapper
+  cards:
+  - {fileID: 1515697241}
+  - {fileID: 1515697240}
+  - {fileID: 1515697239}
+  - {fileID: 1515697238}
+  - {fileID: 1515697237}
+  changer: {fileID: 536056212}
+  dropTime: 0.3
+  riseTime: 0.3
+  dropDistance: 8
+  spread: 1.5
+  spin: 25
+  IsBusy: 0
+--- !u!4 &1504331197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504331195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1515697236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -853,6 +911,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+--- !u!4 &1515697237 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3138462710084792308, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+  m_PrefabInstance: {fileID: 1515697236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1515697238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5201425202072478247, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+  m_PrefabInstance: {fileID: 1515697236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1515697239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4938767371183357393, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+  m_PrefabInstance: {fileID: 1515697236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1515697240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5890902535619695359, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+  m_PrefabInstance: {fileID: 1515697236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1515697241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 136955227140294342, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
+  m_PrefabInstance: {fileID: 1515697236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1594815317 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6793859277959034055, guid: 7a546d6ddc79f8a4186412f4a605e7d9, type: 3}
@@ -1138,3 +1221,4 @@ SceneRoots:
   - {fileID: 912571522}
   - {fileID: 987584430}
   - {fileID: 1221071499}
+  - {fileID: 1504331197}
