@@ -113,6 +113,7 @@ public class CardGame : MonoBehaviour
         if (top == 0)
         {
             Debug.Log("You win!");
+            StartCoroutine(WaitAndExecute(2f));
             StartCoroutine(WinSequence());
         }
     }
@@ -138,10 +139,6 @@ public class CardGame : MonoBehaviour
     IEnumerator WinSequence()
     {
         won = true;
-
-        // 1-second pause before the win animation plays
-        yield return new WaitForSeconds(1f);
-
 
         // remember where every object starts
         Vector3[] upStart = new Vector3[moveUpObjects.Length];
