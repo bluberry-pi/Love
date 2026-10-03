@@ -30,4 +30,24 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject, lifetime);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Enemy e = other.GetComponent<Enemy>();
+            if (e != null) e.TakeHit();
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy e = collision.gameObject.GetComponent<Enemy>();
+            if (e != null) e.TakeHit();
+            Destroy(gameObject);
+        }
+    }
 }
