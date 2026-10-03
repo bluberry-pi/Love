@@ -16,6 +16,6 @@ public class CountdownTimer : MonoBehaviour
             time = 5f;
         }
 
-        timerText.text = Mathf.CeilToInt(time).ToString();
+        timerText.text = "Next deck in: " + Mathf.CeilToInt(time).ToString();
     }
 }
