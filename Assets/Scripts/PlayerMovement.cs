@@ -1,13 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
+    public float deathPauseTime = 1f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private float currentJumpForce;
+
+    private bool hasInitialJumped = false;
+    private bool isDead = false;
 
     void Start()
     {
@@ -20,19 +25,27 @@ public class PlayerMovement : MonoBehaviour
         // Move left and right
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(
+            horizontal * moveSpeed,
+            rb.linearVelocity.y
+        );
 
-        // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        // Initial jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !hasInitialJumped)
         {
             Jump();
+
+            hasInitialJumped = true;
             isGrounded = false;
         }
     }
 
     void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, currentJumpForce);
+        rb.linearVelocity = new Vector2(
+            rb.linearVelocity.x,
+            currentJumpForce
+        );
     }
 
     // Normal Ground
@@ -40,6 +53,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            // If the player already used their initial jump,
+            // touching the ground again means death.
+            if (hasInitialJumped && !isDead)
+            {
+                Death();
+                return;
+            }
+
             isGrounded = true;
             currentJumpForce = jumpForce;
         }
@@ -53,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Trigger Platforms
+    // Platform
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Platform"))
@@ -63,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
             if (platform != null)
             {
                 currentJumpForce = platform.jumpForce;
+
+                platform.PlayerTouched();
             }
 
             Jump();
@@ -70,11 +93,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void Death()
     {
-        if (collision.CompareTag("Platform"))
-        {
-            isGrounded = false;
-        }
+        if (isDead)
+            return;
+
+        isDead = true;
+
+        Debug.Log("Game Over");
+
+        StartCoroutine(DeathSequence());
+    }
+
+    System.Collections.IEnumerator DeathSequence()
+    {
+        Time.timeScale = 0f;
+
+        yield return new WaitForSecondsRealtime(deathPauseTime);
+
+        Debug.Log("Game Over");
+
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
