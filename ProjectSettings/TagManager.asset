@@ -7,6 +7,8 @@ TagManager:
   - Card
   - Enemy
   - Wall
+  - Ground
+  - Platform
   layers:
   - Default
   - TransparentFX
