@@ -771,7 +771,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.59, y: 2.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -837,6 +837,9 @@ MonoBehaviour:
   card2Jump: 17
   card3Jump: 23
   card4Jump: 23
+  bodySprite: {fileID: 1316327248}
+  wobbleTiltAngle: 5
+  wobbleInterval: 0.15
 --- !u!58 &1316327252
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -871,8 +874,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00000035899924, y: -0.31399617}
-  m_Radius: 0.65592897
+  m_Offset: {x: -0.016751498, y: -0.3921688}
+  m_Radius: 0.67267966
 --- !u!1 &1410505694
 GameObject:
   m_ObjectHideFlags: 0
