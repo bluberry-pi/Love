@@ -53,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // If the player already used their initial jump,
-            // touching the ground again means death.
             if (hasInitialJumped && !isDead)
             {
                 Death();
@@ -74,33 +72,33 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Platform
+    // All Platforms
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Platform"))
         {
-            Platform platform = collision.GetComponent<Platform>();
+            BasePlatform platform = collision.GetComponent<BasePlatform>();
 
             if (platform != null)
             {
                 currentJumpForce = platform.jumpForce;
 
                 platform.PlayerTouched();
-            }
 
-            Jump();
-            isGrounded = false;
+                Jump();
+
+                isGrounded = false;
+            }
         }
     }
 
+    // Death
     void Death()
     {
         if (isDead)
             return;
 
         isDead = true;
-
-        Debug.Log("Game Over");
 
         StartCoroutine(DeathSequence());
     }
@@ -109,9 +107,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        yield return new WaitForSecondsRealtime(deathPauseTime);
-
         Debug.Log("Game Over");
+
+        yield return new WaitForSecondsRealtime(deathPauseTime);
 
         Time.timeScale = 1f;
 

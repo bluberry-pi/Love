@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   platforms: []
   pauseTime: 2
+  waitBeforePause: 0.26
