@@ -38,6 +38,8 @@ public class FinalLevelIntro : MonoBehaviour
     [Header("Fall Settings")]
     [Tooltip("How many units above the land point to spawn the player (out of camera view)")]
     public float spawnHeightAboveLand = 12f;
+    [Tooltip("Sound clip played when the player lands")]
+    public AudioClip fallClip;
 
     [Header("Camera Shake on Impact")]
     public float shakeDuration  = 0.55f;
@@ -109,6 +111,19 @@ public class FinalLevelIntro : MonoBehaviour
         {
             playerRb.linearVelocity = Vector2.zero;
             playerRb.gravityScale = originalGravityScale;
+        }
+
+        // Play landing sound FX
+        if (SoundFXManager.instance != null && fallClip != null)
+        {
+            SoundFXManager.instance.PlaySoundFXClip(fallClip, transform, 1f);
+        }
+        else
+        {
+            if (fallClip == null)
+                Debug.LogWarning("[FinalLevelIntro] fallClip is not assigned in the inspector.");
+            if (SoundFXManager.instance == null)
+                Debug.LogWarning("[FinalLevelIntro] SoundFXManager instance not found in scene. Make sure the SoundFXManager prefab is present in the scene.");
         }
 
         // ── 3. Camera shake (impact) ───────────────────────────────

@@ -6,6 +6,10 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    [Header("Audio")]
+    [Tooltip("Sound clip played when the gun is fired")]
+    public AudioClip shootClip;
+
     [Header("Gun Rotation")]
     [Tooltip("Drag the gun pivot Transform here (the child that should rotate toward the cursor)")]
     public Transform gunPivot;
@@ -69,6 +73,12 @@ public class PlayerShooting : MonoBehaviour
         if (b != null)
         {
             b.Launch(dir);
+        }
+
+        // Play shooting sound FX
+        if (SoundFXManager.instance != null && shootClip != null)
+        {
+            SoundFXManager.instance.PlaySoundFXClip(shootClip, transform, 0.7f);
         }
     }
 }
