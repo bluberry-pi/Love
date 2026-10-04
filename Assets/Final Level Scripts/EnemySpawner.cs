@@ -19,9 +19,18 @@ public class EnemySpawner : MonoBehaviour
     public int   spawnCountPerWave = 1;    // enemies spawned per interval
 
     private int currentEnemies = 0;
+    private bool spawning = false;
 
     void Start()
     {
+        // Auto-start is OFF — FinalLevelIntro calls StartSpawning() after the intro.
+    }
+
+    /// <summary>Call this from FinalLevelIntro once the intro sequence is done.</summary>
+    public void StartSpawning()
+    {
+        if (spawning) return;
+
         if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
             Debug.LogWarning("[EnemySpawner] No enemy prefabs assigned!");
@@ -33,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+        spawning = true;
         StartCoroutine(SpawnLoop());
     }
 

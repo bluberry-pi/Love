@@ -16,13 +16,25 @@ public class PlayerMovementFinal : MonoBehaviour
     private float wobbleTimer = 0f;
     private float wobbleSide  = 1f;
 
+    private bool inputEnabled = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>Called by FinalLevelIntro to lock/unlock player controls.</summary>
+    public void SetInputEnabled(bool enabled)
+    {
+        inputEnabled = enabled;
+        if (!enabled && rb != null)
+            rb.linearVelocity = Vector2.zero;
+    }
+
     void Update()
     {
+        if (!inputEnabled) return;
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical   = Input.GetAxisRaw("Vertical");
 
@@ -64,6 +76,7 @@ public class PlayerMovementFinal : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!inputEnabled) return;
         rb.linearVelocity = movement * speed;
     }
 }

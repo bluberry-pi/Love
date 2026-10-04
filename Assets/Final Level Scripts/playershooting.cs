@@ -13,8 +13,15 @@ public class PlayerShooting : MonoBehaviour
              "Barrel points UP by default → set -90. Points LEFT → set 180. Points DOWN → set 90.")]
     public float rotationOffset = 0f;
 
+    private bool inputEnabled = true;
+
+    /// <summary>Called by FinalLevelIntro to lock/unlock shooting.</summary>
+    public void SetInputEnabled(bool enabled) { inputEnabled = enabled; }
+
     void Update()
     {
+        if (!inputEnabled) return;
+
         RotateGunTowardCursor();
 
         if (Input.GetMouseButtonDown(0))
