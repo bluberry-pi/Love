@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 7366617892383084551, guid: e85e5958b25b0714abd1ff1538462031, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   jumpForce: 10
   animationPrefab: {fileID: 4889877663499221255, guid: 4d6f166813d785a47a01d8f4bc83044b, type: 3}
+  platformTouched: {fileID: 8300000, guid: b4616403b35bfcd4581222bb51ebacd2, type: 3}
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   moveSpeed: 2

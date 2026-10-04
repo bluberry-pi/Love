@@ -136,6 +136,8 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 13
   deathPauseTime: 1
+  jumpClip: {fileID: 8300000, guid: 7f6174de57e11954fa2feff66c956619, type: 3}
+  deathClip: {fileID: 8300000, guid: a282a7a4cdfb24c4fa2be28a599e6264, type: 3}
 --- !u!58 &6500603401823676479
 CircleCollider2D:
   m_ObjectHideFlags: 0

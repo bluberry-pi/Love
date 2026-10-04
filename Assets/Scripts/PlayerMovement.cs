@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool hasLeftGround = false; // true once player is airborne after leaving Ground
     private bool isDead = false;
+    public AudioClip jumpClip;
+    public AudioClip deathClip;
 
     void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity.x,
             currentJumpForce
         );
+        SoundFXManager.instance.PlaySoundFXClip(jumpClip, transform, 1f);
     }
 
     // Normal Ground
@@ -99,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         isDead = true;
-
+        SoundFXManager.instance.PlaySoundFXClip(deathClip, transform, 1f);
         StartCoroutine(DeathSequence());
     }
 
