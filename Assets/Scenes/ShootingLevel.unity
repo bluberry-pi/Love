@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   dialoguePanel: {fileID: 0}
   dialogueText: {fileID: 1364602156}
+  canvasToDestroy: {fileID: 1526990294}
   lines:
   - text: PRINCESS...PRINCESS...
     typeSpeed: 0.05
