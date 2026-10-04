@@ -1,18 +1,51 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Platforms")]
     public GameObject[] platforms;
-    public float pauseTime = 2f;
-    public float waitBeforePause = 1.5f;
 
-    private bool allPlatformsDestroyed = false;
+    [Header("Secret Platforms")]
+    public SecretPlatform[] secretPlatforms;
+
+    [Header("Next Scene")]
+    public float nextScenePause = 1f;
+
+    private bool secretPlatformsActivated = false;
+    private bool gameFinished = false;
 
     void Update()
     {
-        if (!allPlatformsDestroyed && AllPlatformsDestroyed())
+        if (gameFinished)
+            return;
+
+        // Check normal platforms
+        if (!secretPlatformsActivated && AllPlatformsDestroyed())
         {
-            allPlatformsDestroyed = true;
+            if (secretPlatforms.Length > 0)
+            {
+                secretPlatformsActivated = true;
+
+                foreach (SecretPlatform platform in secretPlatforms)
+                {
+                    if (platform != null)
+                    {
+                        platform.ActivatePlatform();
+                    }
+                }
+            }
+            else
+            {
+                gameFinished = true;
+                StartCoroutine(NextScene());
+            }
+        }
+
+        // Check secret platforms
+        if (secretPlatformsActivated && AllSecretPlatformsDestroyed())
+        {
+            gameFinished = true;
             StartCoroutine(NextScene());
         }
     }
@@ -30,15 +63,27 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    bool AllSecretPlatformsDestroyed()
+    {
+        foreach (SecretPlatform platform in secretPlatforms)
+        {
+            if (platform != null)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     System.Collections.IEnumerator NextScene()
     {
-        yield return new WaitForSecondsRealtime(waitBeforePause);
         Time.timeScale = 0f;
 
-        //Debug.Log("All platforms destroyed!");
+        Debug.Log("Next Scene");
 
-        yield return new WaitForSecondsRealtime(pauseTime);
-
-        //Debug.Log("Next Scene");
+        yield return new WaitForSecondsRealtime(nextScenePause);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

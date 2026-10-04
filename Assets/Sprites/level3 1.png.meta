@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: e38c335f22dbd8a4c978c7908e55cb8f
+guid: 8c191753e617a0c40b20b1bee831926b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3887782371920749848
-    second: princess_0
-  - first:
-      213: -8979119061319833446
-    second: princess_1
+      213: 7664239672461357790
+    second: level3 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: princess_0
+      name: level3 1_0
       rect:
         serializedVersion: 2
-        x: 145
-        y: 86
-        width: 258
-        height: 302
+        x: 0
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ea53a5f782db0ac0800000000000000
-      internalID: -3887782371920749848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: princess_1
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 139
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a98a71289c2c36380800000000000000
-      internalID: -8979119061319833446
+      spriteID: ed2f38e0069dc5a60800000000000000
+      internalID: 7664239672461357790
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      princess_0: -3887782371920749848
-      princess_1: -8979119061319833446
+      level3 1_0: 7664239672461357790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
