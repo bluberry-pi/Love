@@ -13,5 +13,12 @@ public class KillCounter : MonoBehaviour
     {
         killCount++;
         Debug.Log("[KillCounter] Kills: " + killCount);
+
+        // Check if the outro should fire
+        if (FinalLevelOutro.Instance != null &&
+            killCount >= FinalLevelOutro.Instance.killTarget)
+        {
+            FinalLevelOutro.Instance.TriggerOutro();
+        }
     }
 }

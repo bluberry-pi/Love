@@ -13,6 +13,9 @@ public class DialogueLine
 
     [Tooltip("Delay in seconds between each character. Smaller = faster.\n0.03 = fast  |  0.08 = medium  |  0.15 = slow")]
     public float typeSpeed = 0.05f;
+
+    [Tooltip("Color of this line's text.")]
+    public Color textColor = Color.white;
 }
 
 /// <summary>
@@ -27,7 +30,7 @@ public class DialogueLine
 ///      - Dialogue Panel  → the Panel GameObject
 ///      - Dialogue Text   → the TMP Text component
 /// 5. Add as many lines as you want in the "Dialogue Lines" array.
-///    Each line has its own text and typeSpeed.
+///    Each line has its own text, typeSpeed, and text color.
 /// 6. Call StartSequence() from FinalLevelIntro (already wired up).
 ///
 /// CONTROLS:
@@ -98,7 +101,11 @@ public class DialogueSequence : MonoBehaviour
     // ─────────────────────────────────────────────────────────────
     IEnumerator TypeLine(DialogueLine line)
     {
-        if (dialogueText != null) dialogueText.text = "";
+        if (dialogueText != null)
+        {
+            dialogueText.text  = "";
+            dialogueText.color = line.textColor;   // apply this line's color
+        }
 
         float delay = line.typeSpeed;
 

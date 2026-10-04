@@ -46,6 +46,14 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnLoop());
     }
 
+    /// <summary>Call this from FinalLevelOutro to halt spawning.</summary>
+    public void StopSpawning()
+    {
+        spawning = false;
+        StopAllCoroutines();
+        Debug.Log("[EnemySpawner] Spawning stopped.");
+    }
+
     IEnumerator SpawnLoop()
     {
         yield return new WaitForSeconds(firstSpawnDelay);

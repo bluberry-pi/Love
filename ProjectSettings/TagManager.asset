@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Ground
   - Platform
+  - Princess
   layers:
   - Default
   - TransparentFX

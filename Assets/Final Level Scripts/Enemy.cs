@@ -105,9 +105,12 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // Tell the KillCounter that an enemy died
-        KillCounter.killCount++;
-        Debug.Log("[KillCounter] Kills: " + KillCounter.killCount);
+        // Tell the KillCounter that an enemy died — this also checks for the outro trigger
+        KillCounter kc = FindObjectOfType<KillCounter>();
+        if (kc != null)
+            kc.RegisterKill();
+        else
+            Debug.LogWarning("[Enemy] No KillCounter found in scene!");
 
         // Destroy the enemy immediately
         Destroy(gameObject);

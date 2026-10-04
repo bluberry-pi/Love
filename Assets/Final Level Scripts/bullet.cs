@@ -40,6 +40,13 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (other.CompareTag("Princess"))
+        {
+            PrincessHit ph = other.GetComponent<PrincessHit>();
+            if (ph != null) ph.OnShot();
+            Destroy(gameObject);
+        }
+
         if (other.CompareTag("Wall"))
         {
             Destroy(gameObject);
@@ -52,6 +59,13 @@ public class Bullet : MonoBehaviour
         {
             Enemy e = collision.gameObject.GetComponent<Enemy>();
             if (e != null) e.TakeHit();
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Princess"))
+        {
+            PrincessHit ph = collision.gameObject.GetComponent<PrincessHit>();
+            if (ph != null) ph.OnShot();
             Destroy(gameObject);
         }
 
