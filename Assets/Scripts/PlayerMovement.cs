@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 8f;
     public float deathPauseTime = 1f;
 
+    public SpriteRenderer spriteRenderer; // drag the sprite renderer here
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private float currentJumpForce;
@@ -31,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
             horizontal * moveSpeed,
             rb.linearVelocity.y
         );
+
+        // Flip left/right
+        if (horizontal > 0f)
+            spriteRenderer.flipX = false;
+        else if (horizontal < 0f)
+            spriteRenderer.flipX = true;
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
