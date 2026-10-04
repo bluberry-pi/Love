@@ -1250,6 +1250,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1029329962043104254, guid: 8c94d69074994ad44ac11f7b38e3cfd0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 676.8373
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029329962043104254, guid: 8c94d69074994ad44ac11f7b38e3cfd0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 189.3598
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029329962043104254, guid: 8c94d69074994ad44ac11f7b38e3cfd0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 400.86865
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029329962043104254, guid: 8c94d69074994ad44ac11f7b38e3cfd0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 226
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277122081618800465, guid: 8c94d69074994ad44ac11f7b38e3cfd0, type: 3}
+      propertyPath: m_text
+      value: Jump on the temperory flowers to save the princess
+      objectReference: {fileID: 0}
     - target: {fileID: 2277122081618800465, guid: 8c94d69074994ad44ac11f7b38e3cfd0, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
