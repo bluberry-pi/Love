@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private float currentJumpForce;
 
-    private bool hasInitialJumped = false;
+    private bool hasLeftGround = false; // true once player is airborne after leaving Ground
     private bool isDead = false;
 
     void Start()
@@ -30,12 +30,10 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity.y
         );
 
-        // Initial jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !hasInitialJumped)
+        // Jump
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
-
-            hasInitialJumped = true;
             isGrounded = false;
         }
     }
@@ -53,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (hasInitialJumped && !isDead)
+            // Die any time the player lands on ground after having been airborne
+            if (hasLeftGround && !isDead)
             {
                 Death();
                 return;
@@ -69,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+            hasLeftGround = true; // player is now airborne — next Ground landing = death
         }
     }
 
